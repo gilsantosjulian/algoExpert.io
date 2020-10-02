@@ -13,4 +13,17 @@ const isValidSubsequence = (array, sequence) => {
 const array = [5, 1, 22, 25, 6, -1, 8, 10]
 const subsequence = [1, 6, -1, 10]
 
+const isValidSubsequenceFor = (array, sequence) => {
+	let seqIdx = 0
+	for (let arrIdx = 0; arrIdx < array.length; arrIdx++) {
+		if (sequence[seqIdx] === array[arrIdx]) {
+			seqIdx++
+		}
+		if (seqIdx === sequence.length)
+			return true
+	}
+	return false
+}
+
 console.log(isValidSubsequence(array, subsequence))
+console.log(isValidSubsequenceFor(array, subsequence))
