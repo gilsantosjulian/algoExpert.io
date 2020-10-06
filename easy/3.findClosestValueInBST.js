@@ -1,20 +1,30 @@
+/**
+ * Avg: 
+ *  time = O(lg(n))
+ *  space = O(1)
+ * 
+ * Worst: 
+ *  time = O(n)
+ *  space = O(1)
+ */
+
 const findClosestValueInBst = (tree, target) => {
-  return findClosestValue(tree, target, tree.value)
+  return findClosestValueHelper(tree, target, tree.value)
 }
 
-const findClosestValue = (tree, target, closest) => {
+const findClosestValueHelper = (tree, target, closest) => {
   if (tree === null) return closest
 
-  if (Math.abs(target - tree.value) < closest) {
+  if (Math.abs(target - tree.value) < Math.abs(target - closest)) {
     closest = tree.value
   }
 
   if (target > tree.value) {
-    return findClosestValue(tree.right, target, closest)
+    return findClosestValueHelper(tree.right, target, closest)
   }
 
   if (target < tree.value) {
-    return findClosestValue(tree.left, target, closest)
+    return findClosestValueHelper(tree.left, target, closest)
   }
 
   return tree.value
