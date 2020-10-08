@@ -1,7 +1,7 @@
 /**
  * RECURSIVE WAY
  * Avg: 
- *  time = O(lg(n))
+ *  time = O(n) -> because has to pass for all nodes
  *  space = O(1)
  * 
  * Worst: 
