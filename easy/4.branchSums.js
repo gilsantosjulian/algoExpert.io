@@ -2,11 +2,11 @@
  * RECURSIVE WAY
  * Avg: 
  *  time = O(n) -> because has to pass for all nodes
- *  space = O(1)
+ *  space = O(n)
  * 
  * Worst: 
  *  time = O(n)
- *  space = O(1)
+ *  space = O(n)
  */
 
 
