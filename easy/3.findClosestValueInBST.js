@@ -1,4 +1,5 @@
 /**
+ * RECURSIVE WAY
  * Avg: 
  *  time = O(lg(n))
  *  space = O(1)
@@ -71,3 +72,41 @@ root.right.right = new BST(22);
 const expected = 13;
 
 console.log(findClosestValueInBst(root, 12))
+
+
+/**
+ * ITERATIVE WAY
+ * Avg: 
+ *  time = O(lg(n))
+ *  space = O(1)
+ * 
+ * Worst: 
+ *  time = O(n)
+ *  space = O(1)
+ */
+
+
+ const findClosestValueInBstIter = (tree, target) => {
+   return findClosestValueHelperIter(tree, target)
+ }
+
+ const findClosestValueHelperIter = (tree, target) => {
+  let closest = tree.vale
+  let currentNode = tree
+  while (currentNode !== null) {
+    
+    if (Math.abs(target - closest) > Math.abs(target - currentNode))
+      closest = currentNode.value
+    
+    if (target > currentNode.value)
+      currentNode = currentNode.right
+
+    if (target < currentNode.value)
+      currentNode = currentNode.left
+
+    return currentNode.value
+  }
+ }
+
+
+ console.log(findClosestValueInBstIter(root, 12))
