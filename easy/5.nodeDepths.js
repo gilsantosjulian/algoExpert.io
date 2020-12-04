@@ -1,3 +1,14 @@
+/**
+ * RECURSIVE WAY
+ * Avg: 
+ *  time = O(n) -> because has to pass for all nodes
+ *  space = O(h) -> the calls to save value into stack will be tree depth
+ *                  where h is the height of the tree
+ */
+
+
+// SOLUTION ONE:
+// O(n) time | O(h) space
 const nodeDepths = (root) => {
 	let depthResult = nodeDepthsHelper(root, 0, [])
 	return depthResult.reduce((acc, item) => acc + item, 0)
@@ -15,6 +26,18 @@ const nodeDepthsHelper = (currentNode, depth, depthResult) => {
 	}
 	
 	return depthResult
+}
+
+// SOLUTION TWO
+// O(n) time | O(h) space
+function nodeDepths(root) {
+  // Write your code here.
+	return nodeDepthsHelper(root, 0)
+}
+
+function nodeDepthsHelper(currentNode, depth) {	
+	if(!currentNode) return 0
+	return depth + nodeDepthsHelper(currentNode.left, depth + 1) + nodeDepthsHelper(currentNode.right, depth + 1)
 }
 
 // This is the class of the input binary tree.
