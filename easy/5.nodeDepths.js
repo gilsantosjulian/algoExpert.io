@@ -1,20 +1,20 @@
 const nodeDepths = (root) => {
-	let sumResult = nodeDepthsHelper(root, 0, [])
-	return sumResult.reduce((acc, item) => acc + item, 0)
+	let depthResult = nodeDepthsHelper(root, 0, [])
+	return depthResult.reduce((acc, item) => acc + item, 0)
 }
 
-const nodeDepthsHelper = (currentNode, sum, sumResult) => {
-	sumResult.push(sum)
+const nodeDepthsHelper = (currentNode, depth, depthResult) => {
+	depthResult.push(depth)
 	
 	if(currentNode.left) {
-		nodeDepthsHelper(currentNode.left, sum + 1, sumResult)
+		nodeDepthsHelper(currentNode.left, depth + 1, depthResult)
 	}
 	
 	if(currentNode.right) {
-		nodeDepthsHelper(currentNode.right, sum + 1, sumResult)
+		nodeDepthsHelper(currentNode.right, depth + 1, depthResult)
 	}
 	
-	return sumResult
+	return depthResult
 }
 
 // This is the class of the input binary tree.
