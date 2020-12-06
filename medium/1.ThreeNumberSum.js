@@ -19,6 +19,8 @@
 
  */
 
+
+// SOLUTION ONE
  const threeNumberSum = (array, targetSum) => {
   // Write your code here.
 	let triplets = []
@@ -45,3 +47,30 @@ const array = [12, 3, 1, 2, -6, 5, -8, 6]
 const targetSum = 0
 
 console.log(threeNumberSum(array, targetSum))
+
+
+// SOLUTION TWO
+// O(n^2) time | O(n) space
+const threeNumberSum2 = (array, targetSum) => {
+	let triplets = []
+	for(i=0; i<array.length; i++) {
+		array = array.sort((a, b) => a - b)
+		let left = i+1
+		let right = array.length -1
+		while(left < right) {
+			currentSum = array[i] + array[left] + array[right]
+			if(currentSum === targetSum) {
+				triplets.push([array[i], array[left], array[right]])
+				left++
+				right--
+			} else if(currentSum < 0) {
+				left++
+			} else if(currentSum > 0) {
+				right--
+			}
+		}
+	}
+	return triplets
+}
+
+console.log(threeNumberSum2(array, targetSum))
